@@ -1,6 +1,16 @@
-import cmd 
+import typer 
 
-class TodoCLI(cmd.Cmd):
+app = typer.Typer()
 
-    prompt = '>>> '
-    intro = "Welcome to your todo list CLI tool. Type 'help' for available commands."
+@app.command()
+def hello(name: str, iq: int, display_iq: bool = True):
+    print(f"Hello, {name}")
+    if display_iq:
+        print(f"Your IQ is {iq}")
+
+@app.command()
+def goodbye():
+    print("Goodbye")
+
+if __name__ == "__main__":
+    app()
